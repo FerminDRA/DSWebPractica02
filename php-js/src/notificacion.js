@@ -1,4 +1,4 @@
-function llenarCampos(clave) {
+function llenarCampo(clave) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'conexion.php?clave=' + clave, true);
 

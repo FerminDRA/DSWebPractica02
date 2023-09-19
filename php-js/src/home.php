@@ -70,6 +70,6 @@ include('conexion.php');
             ?>
         </tbody>
     </table>
-    <script src="notification.js"></script>
+    <script src="notificacion.js"></script>
 </body>
 </html>

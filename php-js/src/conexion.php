@@ -90,7 +90,7 @@ function lista(){
 
     foreach ($registros as $registro) {
         echo "<tr>";
-        echo "<td><a href='javascript:void(0);' onclick='llenarCampos(\"{$registro['clave']}\");'>{$registro['clave']}</a></td>";
+        echo "<td><a href='javascript:void(0);' onclick='llenarCampo(\"{$registro['clave']}\");'> {$registro['clave']} </a></td>";
         echo "<td>{$registro['nombre']}</td>";
         echo "<td>{$registro['direccion']}</td>";
         echo "<td>{$registro['telefono']}</td>";
