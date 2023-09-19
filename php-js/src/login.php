@@ -31,7 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <input type="submit" value="Iniciar Sesión">
     </form>
-
+    <form method="POST" action="registro.php">
+        <button type="submit" name="registrarse">Registrarse</button>
+    </form>
     <?php
     if (isset($error)) {
         echo "<p>$error</p>";

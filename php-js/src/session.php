@@ -52,4 +52,43 @@ function iniciarSesion() {
         echo "Error: " . $e->getMessage();
     }
 }
+
+function agregarUsuario($id, $nombre, $contrasena) {
+    $host = '172.17.0.2';
+    $dbname = 'mydb';
+    $username = 'postgres';
+    $password = 'postgres';
+    $port = '5432';
+
+    try {
+        $conexion = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $username, $password);
+        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $consulta = "INSERT INTO usuarios (id, nombre, pass) VALUES (:id, :nombre, :contrasena)";
+
+        $stmt = $conexion->prepare($consulta);
+
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":nombre", $nombre);
+        $stmt->bindParam(":contrasena", $contrasena);
+
+        $stmt->execute();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+if (isset($_POST['registrar'])) {
+    $id = $_POST['id'];
+    $nombre = $_POST['nombre'];
+    $contrasena = $_POST['contrasena'];
+
+    // Llamar a la función para agregar un nuevo usuario
+    agregarUsuario($id, $nombre, $contrasena);
+
+    // Redirigir al usuario a una página de éxito o a donde desees
+    header("Location: login.php");
+    exit();
+}
+
 ?>
